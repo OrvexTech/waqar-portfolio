@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waqar Ali — Graphic Designer & Digital Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --surface: #101010;
+    --surface2: #161616;
+    --border: #222222;
+    --gold: #C9A84C;
+    --gold-light: #E2C47A;
+    --gold-dim: rgba(201,168,76,0.15);
+    --white: #F5F0E8;
+    --gray: #6B6B6B;
+    --gray-light: #9A9A9A;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+    --font-label: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--black); }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ─── UTILITIES ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .gold { color: var(--gold); }
+  .label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px 0 32px;
+  }
+  section { padding: 100px 0; }
+
+  /* ─── HEADER ─── */
+  #header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  #header.scrolled {
+    background: rgba(8,8,8,0.97);
+    box-shadow: 0 1px 0 var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    padding: 0 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .logo span { color: var(--gold); }
+  nav { display: flex; align-items: center; gap: 36px; }
+  nav a {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  nav a:hover { color: var(--white); }
+  nav a:hover::after { transform: scaleX(1); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8,8,8,0.98);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    backdrop-filter: blur(16px);
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .mobile-nav a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 80px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+  }
+  .hero-text .label { margin-bottom: 24px; display: block; }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    color: var(--gray-light);
+    line-height: 1.5;
+    margin: 24px 0 16px;
+    max-width: 540px;
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--white);
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  /* Hero photo */
+  .hero-photo {
+    position: relative;
+    aspect-ratio: 3/4;
+    max-height: 560px;
+  }
+  .hero-photo-frame {
+    width: 100%;
+    height: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-photo-frame .placeholder-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray);
+  }
+  .hero-photo-frame .placeholder-text svg { width: 48px; height: 48px; opacity: 0.3; }
+  .hero-photo-frame .placeholder-text span { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.5; }
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    top: -12px; right: -12px;
+    bottom: 12px; left: 12px;
+    border: 1px solid rgba(201,168,76,0.3);
+    z-index: -1;
+  }
+  .hero-photo-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .hero-photo-badge strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .hero-photo-badge span {
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .hero-scroll span {
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-image {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .about-image-frame {
+    width: 100%;
+    height: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .about-image-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .about-image-frame .placeholder-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray);
+  }
+  .about-image::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px;
+    right: -20px; bottom: -20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    z-index: -1;
+  }
+  .about-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 32px;
+  }
+  .role-tag {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .role-tag:hover { border-color: var(--gold); color: var(--gold); }
+  .about-text p {
+    color: var(--gray-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .about-highlight {
+    padding: 24px;
+    border-left: 2px solid var(--gold);
+    background: var(--gold-dim);
+    margin: 32px 0;
+  }
+  .about-highlight p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--white);
+    margin: 0;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--black); }
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: end;
+  }
+  .services-intro p { color: var(--gray-light); font-size: 0.95rem; line-height: 1.8; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .service-card {
+    background: var(--black);
+    padding: 36px 32px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover { background: var(--surface2); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--gold);
+    transition: border-color 0.3s;
+  }
+  .service-card:hover .service-icon { border-color: var(--gold); }
+  .service-icon svg { width: 20px; height: 20px; }
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .service-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+  .service-num {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    line-height: 1;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--surface); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 80px;
+    margin-top: 20px;
+  }
+  .skill-item { margin-bottom: 8px; }
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .skill-name {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .skill-pct {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--gold);
+  }
+  .skill-track {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .skills-tools {
+    margin-top: 60px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .tool-badge {
+    padding: 10px 20px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .tool-badge:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+  /* ─── PORTFOLIO ─── */
+  #portfolio { background: var(--black); }
+  .portfolio-filters {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin: 40px 0 48px;
+  }
+  .filter-btn {
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--gray);
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .portfolio-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--surface2);
+    cursor: pointer;
+  }
+  .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portfolio-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray);
+    background: var(--surface2);
+  }
+  .portfolio-placeholder svg { width: 32px; height: 32px; opacity: 0.3; }
+  .portfolio-placeholder span { font-family: var(--font-label); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; }
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8,8,8,0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-overlay h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+  .portfolio-overlay span {
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--surface); }
+  .projects-list { display: flex; flex-direction: column; gap: 2px; margin-top: 48px; }
+  .project-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+    align-items: center;
+    transition: border-color 0.3s;
+  }
+  .project-card:hover { border-color: rgba(201,168,76,0.4); }
+  .project-card.featured { border-left: 3px solid var(--gold); }
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .project-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .project-card p { color: var(--gray-light); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .project-tag {
+    padding: 4px 12px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.3);
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .project-screenshot {
+    aspect-ratio: 16/10;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+  .project-screenshot img { width: 100%; height: 100%; object-fit: cover; }
+  .project-screenshot .placeholder-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray);
+  }
+
+  /* ─── REVIEWS ─── */
+  #reviews { background: var(--black); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--border);
+  }
+  .review-card {
+    background: var(--black);
+    padding: 40px 36px;
+    transition: background 0.3s;
+  }
+  .review-card:hover { background: var(--surface); }
+  .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 20px; }
+  .review-text {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--gray-light);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .reviewer-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .reviewer-info strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .reviewer-info span {
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ─── VIDEO PORTFOLIO ─── */
+  #video-portfolio { background: var(--surface); }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .video-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .video-item:hover { border-color: rgba(201,168,76,0.4); }
+  .video-thumb {
+    aspect-ratio: 16/9;
+    background: var(--black);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .video-thumb iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .play-btn {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+  .play-btn:hover { background: var(--gold-dim); }
+  .video-info { padding: 20px; }
+  .video-info h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .video-info span {
+    font-family: var(--font-label);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── INDUSTRIES ─── */
+  #industries { background: var(--black); }
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .industry-card {
+    background: var(--black);
+    padding: 36px 28px;
+    text-align: center;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .industry-card:hover { background: var(--surface); }
+  .industry-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .industry-card h3 {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    transition: color 0.2s;
+  }
+  .industry-card:hover h3 { color: var(--gold); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--surface); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 40px;
+  }
+  .contact-info p {
+    color: var(--gray-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .contact-detail-icon svg { width: 16px; height: 16px; }
+  .contact-detail strong {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .contact-detail span { font-size: 0.9rem; color: var(--white); }
+  .contact-socials { display: flex; gap: 12px; margin-top: 40px; }
+  .social-link {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+  .social-link svg { width: 18px; height: 18px; }
+
+  /* Form */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6B6B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  .form-group select option { background: var(--surface2); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 8px; }
+  .form-submit button {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-submit button:hover { background: var(--gold-light); }
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050505;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 32px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .logo { display: inline-block; margin-bottom: 12px; }
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 280px;
+    margin-top: 12px;
+  }
+  .footer-roles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 16px 0;
+  }
+  .footer-roles span {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .footer-roles span::before { content: '— '; color: var(--gold); }
+  .footer-nav h4 {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-nav a {
+    font-size: 0.85rem;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--white); }
+  .footer-social h4 {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-social-links { display: flex; gap: 10px; margin-bottom: 24px; }
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+  }
+  .footer-bottom span { color: var(--gold); }
+
+  /* ─── GOLD LINE SEPARATOR ─── */
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  /* ─── BACK TO TOP ─── */
+  #back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+  }
+  #back-to-top.visible { opacity: 1; pointer-events: all; }
+  #back-to-top:hover { transform: translateY(-3px); }
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .header-inner { padding: 0 24px; }
+    nav { display: none; }
+    .hamburger { display: flex; z-index: 1001; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
+    .hero-photo { max-height: 400px; max-width: 320px; margin: 0 auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-image { max-height: 400px; }
+    .services-intro { grid-template-columns: 1fr; gap: 16px; }
+    .skills-grid { grid-template-columns: 1fr; gap: 24px; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-card { grid-template-columns: 1fr; gap: 32px; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .video-grid { grid-template-columns: 1fr 1fr; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 680px) {
+    section { padding: 72px 0; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .project-card { padding: 28px 24px; }
+    .hero-inner { padding: 0 16px; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#home" class="logo">Waqar <span>Ali</span></a>
+    <nav id="desktop-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#projects">Projects</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#home" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#portfolio" class="mobile-link">Portfolio</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="label">Available for New Projects</span>
+      <h1 class="hero-name">Waqar<em>Ali</em></h1>
+      <p class="hero-headline">Creating Visual Experiences & Digital Solutions That Drive Business Growth</p>
+      <p class="hero-sub">Graphic Designer, Website Developer, and SaaS Solution Builder helping businesses build strong brands and modern digital experiences.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn-outline">Hire Me</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <!-- Replace src with actual photo -->
+        <div class="placeholder-text">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Profile Photo</span>
+        </div>
+      </div>
+      <div class="hero-photo-badge">
+        <strong>5+</strong>
+        <span>Years of<br>Excellence</span>
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </a>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="about-image-frame">
+          <!-- Replace src with actual about photo -->
+          <div class="placeholder-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>About Photo</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <span class="label">About Me</span>
+        <div class="divider"></div>
+        <h2 class="section-title">Crafting Brands &amp; <em>Digital Experiences</em></h2>
+        <div class="about-roles">
+          <span class="role-tag">Graphic Designer</span>
+          <span class="role-tag">Website Developer</span>
+          <span class="role-tag">WordPress Developer</span>
+          <span class="role-tag">Custom Website Developer</span>
+          <span class="role-tag">SaaS Builder</span>
+        </div>
+        <p>I'm Waqar Ali, a multidisciplinary designer and developer passionate about creating meaningful visual identities and digital solutions that help businesses grow. I work at the intersection of design and technology, delivering experiences that are both beautiful and functional.</p>
+        <p>From crafting compelling brand identities to building robust web applications, I bring a strategic, client-focused approach to every project. My work spans logo design, full-scale branding, custom web development, and SaaS platforms.</p>
+        <div class="about-highlight">
+          <p>"Currently building a Travel Agency SaaS Platform — a complete solution for managing customers, bookings, invoices, reporting, and day-to-day operations."</p>
+        </div>
+        <a href="#contact" class="btn-primary">Work With Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="container">
+    <div class="services-intro">
+      <div class="reveal">
+        <span class="label">What I Do</span>
+        <div class="divider"></div>
+        <h2 class="section-title">Services &amp; <em>Expertise</em></h2>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p>I offer a comprehensive suite of creative and digital services — from visual brand identity to full-stack web development and SaaS product design. Every deliverable is crafted with precision and purpose.</p>
+      </div>
+    </div>
+    <div class="services-grid reveal">
+      <!-- Service Cards -->
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <h3>Logo Design</h3>
+        <p>Distinctive, memorable logos built on strategy and crafted with precision for lasting brand recognition.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Brand Identity Design</h3>
+        <p>Complete brand systems including color palettes, typography, guidelines, and visual language that tells your story.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+        <h3>Social Media Design</h3>
+        <p>Scroll-stopping visuals and cohesive social media templates that strengthen your brand presence online.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Banner Design</h3>
+        <p>High-impact banners for digital advertising, events, and marketing campaigns with conversion-focused design.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Packaging Design</h3>
+        <p>Packaging that stands out on shelves and communicates your brand values at the point of purchase.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <h3>Website Design</h3>
+        <p>Beautiful, modern website designs crafted to convert visitors into customers and elevate brand perception.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">07</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>WordPress Development</h3>
+        <p>Fast, secure, and fully custom WordPress websites built for performance and ease of management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">08</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Custom Website Development</h3>
+        <p>Tailored web solutions built from scratch for businesses that need more than a template can offer.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">09</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2M15 8h2M7 11h5"/></svg></div>
+        <h3>SaaS Development</h3>
+        <p>End-to-end SaaS product design and development — from concept and UI/UX to a fully functional platform.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">10</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <h3>UI/UX Design</h3>
+        <p>User-centered interface design that prioritizes clarity, usability, and delightful product experiences.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">11</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Landing Page Design</h3>
+        <p>High-converting landing pages designed to capture attention, build trust, and drive measurable results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Expertise</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Skills &amp; <em>Proficiency</em></h2>
+    </div>
+    <div class="skills-grid reveal reveal-delay-1">
+      <div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Adobe Photoshop</span><span class="skill-pct">95%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Adobe Illustrator</span><span class="skill-pct">92%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Figma</span><span class="skill-pct">90%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Canva</span><span class="skill-pct">96%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="96"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Branding</span><span class="skill-pct">93%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="93"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">UI/UX Design</span><span class="skill-pct">88%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">WordPress</span><span class="skill-pct">90%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">HTML</span><span class="skill-pct">87%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="87"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">CSS</span><span class="skill-pct">85%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-pct">80%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-tools reveal">
+      <span class="label">Tools & Software</span>
+      <div class="tools-grid">
+        <span class="tool-badge">Adobe Photoshop</span>
+        <span class="tool-badge">Adobe Illustrator</span>
+        <span class="tool-badge">Figma</span>
+        <span class="tool-badge">Canva</span>
+        <span class="tool-badge">WordPress</span>
+        <span class="tool-badge">VS Code</span>
+        <span class="tool-badge">Git</span>
+        <span class="tool-badge">Elementor</span>
+        <span class="tool-badge">Webflow</span>
+        <span class="tool-badge">Trello</span>
+        <span class="tool-badge">Notion</span>
+        <span class="tool-badge">Slack</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Selected Work</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Portfolio <em>Gallery</em></h2>
+    </div>
+    <div class="portfolio-filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="branding">Branding</button>
+      <button class="filter-btn" data-filter="social-media">Social Media</button>
+      <button class="filter-btn" data-filter="website-design">Website Design</button>
+      <button class="filter-btn" data-filter="saas-design">SaaS Design</button>
+      <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+      <button class="filter-btn" data-filter="marketing">Marketing Materials</button>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-item" data-cat="branding">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Branding Project</span></div>
+        <div class="portfolio-overlay"><h4>Brand Identity</h4><span>Branding</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="social-media">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Social Media Design</span></div>
+        <div class="portfolio-overlay"><h4>Social Campaign</h4><span>Social Media</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="website-design">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Website Design</span></div>
+        <div class="portfolio-overlay"><h4>Corporate Website</h4><span>Website Design</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="saas-design">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>SaaS Design</span></div>
+        <div class="portfolio-overlay"><h4>SaaS Dashboard</h4><span>SaaS Design</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="ui-ux">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>UI/UX Project</span></div>
+        <div class="portfolio-overlay"><h4>App Interface</h4><span>UI/UX</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="marketing">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Marketing Material</span></div>
+        <div class="portfolio-overlay"><h4>Marketing Banner</h4><span>Marketing Materials</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="branding">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Logo Design</span></div>
+        <div class="portfolio-overlay"><h4>Logo Collection</h4><span>Branding</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="website-design">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Landing Page</span></div>
+        <div class="portfolio-overlay"><h4>Landing Page</h4><span>Website Design</span></div>
+      </div>
+      <div class="portfolio-item" data-cat="social-media">
+        <div class="portfolio-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Social Template</span></div>
+        <div class="portfolio-overlay"><h4>Social Templates</h4><span>Social Media</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Featured Work</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Projects &amp; <em>Case Studies</em></h2>
+    </div>
+    <div class="projects-list">
+      <!-- Project 1 -->
+      <div class="project-card featured reveal">
+        <div class="project-info">
+          <div class="project-status">
+            <div class="status-dot"></div>
+            <span class="label">In Development</span>
+          </div>
+          <h3>Travel Agency SaaS Platform</h3>
+          <p>A comprehensive SaaS solution built specifically for travel agencies. The platform covers every aspect of agency operations — from managing customer profiles and booking itineraries to generating invoices, running financial reports, and handling day-to-day operational workflows.</p>
+          <p>Designed with a focus on usability and efficiency, helping travel businesses reduce manual work and deliver better customer experiences.</p>
+          <div class="project-tags">
+            <span class="project-tag">SaaS</span>
+            <span class="project-tag">Travel Tech</span>
+            <span class="project-tag">Dashboard Design</span>
+            <span class="project-tag">Custom Development</span>
+            <span class="project-tag">UI/UX</span>
+          </div>
+        </div>
+        <div class="project-screenshot">
+          <!-- Replace with actual screenshot -->
+          <div class="placeholder-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:40px;height:40px;opacity:0.3"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span style="font-family:var(--font-label);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.4;color:var(--gray)">Project Screenshot</span>
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-status">
+            <div class="status-dot" style="background:var(--gray-light);animation:none"></div>
+            <span class="label" style="color:var(--gray)">Completed</span>
+          </div>
+          <h3>Corporate Branding Project</h3>
+          <p>A full-scale brand identity project for a corporate client — including logo design, color system, typography, stationery design, and a comprehensive brand guidelines document for consistent application across all touchpoints.</p>
+          <div class="project-tags">
+            <span class="project-tag">Branding</span>
+            <span class="project-tag">Logo Design</span>
+            <span class="project-tag">Brand Guidelines</span>
+            <span class="project-tag">Stationery</span>
+          </div>
+        </div>
+        <div class="project-screenshot">
+          <div class="placeholder-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:40px;height:40px;opacity:0.3"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            <span style="font-family:var(--font-label);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.4;color:var(--gray)">Project Screenshot</span>
+          </div>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-status">
+            <div class="status-dot" style="background:var(--gray-light);animation:none"></div>
+            <span class="label" style="color:var(--gray)">Completed</span>
+          </div>
+          <h3>Website Design Project</h3>
+          <p>A modern, high-performance website design and development project — featuring responsive design, custom animations, and a clean user experience optimized for conversions and brand storytelling.</p>
+          <div class="project-tags">
+            <span class="project-tag">Web Design</span>
+            <span class="project-tag">Development</span>
+            <span class="project-tag">UI/UX</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+        </div>
+        <div class="project-screenshot">
+          <div class="placeholder-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:40px;height:40px;opacity:0.3"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+            <span style="font-family:var(--font-label);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.4;color:var(--gray)">Project Screenshot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section id="reviews">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Client Feedback</span>
+      <div class="divider"></div>
+      <h2 class="section-title">What Clients <em>Say</em></h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Waqar delivered a brand identity that truly captured our company's vision. The attention to detail and creative thinking was exceptional. Highly recommend for any branding project."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">S</div>
+          <div class="reviewer-info">
+            <strong>Sarah M.</strong>
+            <span>CEO, Tech Startup — USA</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Outstanding WordPress development work. The website is fast, modern, and exactly what we envisioned. Waqar communicated clearly throughout and delivered on time."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">J</div>
+          <div class="reviewer-info">
+            <strong>James T.</strong>
+            <span>Director, Consulting Firm — UK</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The social media designs transformed our online presence. Creative, consistent, and aligned with our brand perfectly. We saw a notable increase in engagement within weeks."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">A</div>
+          <div class="reviewer-info">
+            <strong>Amelia R.</strong>
+            <span>Marketing Manager — Australia</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Excellent UI/UX work on our SaaS product. Waqar understood our users' needs and translated them into an interface that is both intuitive and visually impressive."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">M</div>
+          <div class="reviewer-info">
+            <strong>Michael K.</strong>
+            <span>Product Lead — Canada</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Professional, talented, and a pleasure to work with. The logo and brand package delivered were beyond our expectations. Will definitely be a long-term creative partner."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">F</div>
+          <div class="reviewer-info">
+            <strong>Fatima H.</strong>
+            <span>Founder, E-Commerce Brand — UAE</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Waqar built our custom website from scratch and it looks absolutely premium. Fast loading, mobile optimized, and all our feedback was incorporated professionally."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">D</div>
+          <div class="reviewer-info">
+            <strong>David L.</strong>
+            <span>Real Estate Developer — USA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO PORTFOLIO ═══ -->
+<section id="video-portfolio">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Video Showcase</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Video <em>Portfolio</em></h2>
+    </div>
+    <div class="video-grid reveal">
+      <div class="video-item">
+        <div class="video-thumb">
+          <!-- Replace with YouTube embed: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>SaaS Platform Demo</h4>
+          <span>Product Demo</span>
+        </div>
+      </div>
+      <div class="video-item">
+        <div class="video-thumb">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>Brand Identity Presentation</h4>
+          <span>Design Presentation</span>
+        </div>
+      </div>
+      <div class="video-item">
+        <div class="video-thumb">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+        <div class="video-info">
+          <h4>Website Design Walkthrough</h4>
+          <span>Project Demo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INDUSTRIES ═══ -->
+<section id="industries">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:0">
+      <span class="label">Experience</span>
+      <div class="divider" style="margin:20px auto 0"></div>
+      <h2 class="section-title" style="text-align:center">Industries I've <em>Worked With</em></h2>
+    </div>
+    <div class="industries-grid reveal">
+      <div class="industry-card">
+        <span class="industry-icon">✈️</span>
+        <h3>Travel &amp; Tourism</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">💻</span>
+        <h3>Technology &amp; SaaS</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">🛒</span>
+        <h3>E-Commerce</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">🏠</span>
+        <h3>Real Estate</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">🏥</span>
+        <h3>Healthcare</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">🎓</span>
+        <h3>Education</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">💰</span>
+        <h3>Finance</h3>
+      </div>
+      <div class="industry-card">
+        <span class="industry-icon">🚀</span>
+        <h3>Startups</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Get In Touch</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Start a <em>Project</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p>Ready to build something remarkable? Whether you need a strong brand identity, a custom website, or a full SaaS platform — let's discuss your project and create something exceptional together.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <span>your@email.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.99 5.18 2 2 0 016.98 3h3a2 2 0 012 1.72 13 13 0 00.7 2.81 2 2 0 01-.45 2.11L11.09 10a16 16 0 006.29 6.29l1.36-1.16a2 2 0 012.11-.45 13 13 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <strong>WhatsApp / Phone</strong>
+            <span>+92 XXX XXX XXXX</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <strong>Available For</strong>
+            <span>Remote Worldwide &amp; International Clients</span>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <!-- LinkedIn -->
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" name="company" placeholder="Your company name">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="project-type">Project Type *</label>
+              <select id="project-type" name="project-type" required>
+                <option value="" disabled selected>Select service</option>
+                <option>Logo Design</option>
+                <option>Branding</option>
+                <option>Website Design</option>
+                <option>WordPress Website</option>
+                <option>Custom Website</option>
+                <option>SaaS Platform</option>
+                <option>UI/UX Design</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget" name="budget">
+                <option value="" disabled selected>Select budget</option>
+                <option>Under $500</option>
+                <option>$500 – $1,000</option>
+                <option>$1,000 – $2,500</option>
+                <option>$2,500 – $5,000</option>
+                <option>$5,000 – $10,000</option>
+                <option>$10,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Send Message</button>
+          </div>
+          <p class="form-note">I typically respond within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo">Waqar <span>Ali</span></a>
+        <div class="footer-roles">
+          <span>Graphic Designer</span>
+          <span>Website Developer</span>
+          <span>SaaS Builder</span>
+        </div>
+        <p>Creating premium digital experiences and visual identities for businesses worldwide.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <div class="footer-social-links">
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <p style="font-size:0.85rem;color:var(--gray);line-height:1.7">Available for remote projects worldwide. Let's build something great.</p>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>Waqar Ali</span>. All Rights Reserved.</p>
+      <p>Graphic Designer · Website Developer · SaaS Builder</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// ─── HEADER SCROLL ───
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ─── HAMBURGER MENU ───
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── SMOOTH SCROLL (all anchor links) ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 72;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ─── BACK TO TOP ───
+document.getElementById('back-to-top').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ─── REVEAL ON SCROLL ───
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
+
+// ─── SKILL BARS ANIMATION ───
+const skillFills = document.querySelectorAll('.skill-fill');
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fill = entry.target;
+      setTimeout(() => {
+        fill.style.width = fill.dataset.width + '%';
+      }, 200);
+      skillObserver.unobserve(fill);
+    }
+  });
+}, { threshold: 0.2 });
+skillFills.forEach(fill => skillObserver.observe(fill));
+
+// ─── PORTFOLIO FILTER ───
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    portfolioItems.forEach(item => {
+      if (filter === 'all' || item.dataset.cat === filter) {
+        item.style.display = '';
+        item.style.opacity = '0';
+        setTimeout(() => { item.style.opacity = '1'; item.style.transition = 'opacity 0.4s'; }, 10);
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ─── CONTACT FORM ───
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const orig = btn.textContent;
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#2a6644';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    this.reset();
+  }, 3000);
+});
+</script>
+</body>
+</html>
